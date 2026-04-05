@@ -11,3 +11,31 @@ agentic-bi-platform/
 ├── config.py                 ← Gemini API config
 ├── requirements.txt
 └── main.py                   ← entry point
+
+
+Full Agent Graph Flow
+
+                    ┌─────────────┐
+                    │   Monitor   │  ← Polls Power BI REST API
+                    └──────┬──────┘
+                           │
+              ┌────────────▼────────────┐
+              │   should_diagnose()?    │
+              └────────┬────────────────┘
+                       │
+          ┌────────────┴──────────────┐
+          │ healthy                   │ failed/degraded
+          ▼                           ▼
+         END               ┌─────────────────┐
+                           │    Diagnose     │  ← Gemini 2.5 Flash
+                           └────────┬────────┘
+                                    │
+                           ┌────────▼────────┐
+                           │     Heal        │  ← dbt Core CLI
+                           └────────┬────────┘
+                                    │
+                           ┌────────▼────────┐
+                           │     Notify      │  ← Gmail SMTP
+                           └────────┬────────┘
+                                    │
+                                   END
