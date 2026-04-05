@@ -1,18 +1,15 @@
 from config import GEMINI_API_KEY, GEMINI_MODEL
 from graph.bi_agent_graph import build_graph
 from graph.state import AgentState
+from tools.powerbi_tools import DASHBOARD_REGISTRY
 from datetime import datetime
 
-def run():
-    # Confirm API key loaded
-    print(f"✅ Gemini API loaded: {GEMINI_API_KEY[:8]}****")
-    print(f"✅ Model: {GEMINI_MODEL}")
-
+def run_dashboard(dashboard_id: str, dashboard_name: str):
     graph = build_graph()
 
     initial_state: AgentState = {
-        "dashboard_id": "dashboard_001",
-        "dashboard_name": "Order Lifecycle Executive Dashboard",
+        "dashboard_id": dashboard_id,
+        "dashboard_name": dashboard_name,
         "health_status": "healthy",
         "failure_reason": None,
         "affected_dbt_model": None,
@@ -26,14 +23,27 @@ def run():
         "logs": []
     }
 
-    print("\n🚀 Starting Agentic BI Platform...")
     result = graph.invoke(initial_state)
+    return result
 
-    print("\n✅ Final State:")
-    for log in result["logs"]:
-        print(log)
-    print(f"Heal Status  : {result['heal_status']}")
-    print(f"Root Cause   : {result['root_cause']}")
+def run():
+    print(f"✅ Gemini API loaded: {GEMINI_API_KEY[:8]}****")
+    print(f"✅ Model: {GEMINI_MODEL}")
+    print("\n🚀 Starting Agentic BI Platform — Polling all dashboards...\n")
+    print("=" * 60)
+
+    for dashboard in DASHBOARD_REGISTRY:
+        print(f"\n📊 Checking: {dashboard['dashboard_name']}")
+        print("-" * 60)
+        result = run_dashboard(
+            dashboard["dashboard_id"],
+            dashboard["dashboard_name"]
+        )
+        print(f"\n📋 Result:")
+        print(f"   Health Status : {result['health_status']}")
+        print(f"   Heal Status   : {result['heal_status']}")
+        print(f"   Root Cause    : {result['root_cause']}")
+        print("=" * 60)
 
 if __name__ == "__main__":
     run()
