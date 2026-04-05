@@ -1,0 +1,13 @@
+agentic-bi-platform/
+├── graph/
+│   ├── __init__.py
+│   ├── state.py              ← AgentState definition
+│   └── bi_agent_graph.py     ← LangGraph StateGraph wiring
+├── agents/
+│   ├── __init__.py
+│   ├── monitor_agent.py      ← stub
+│   ├── diagnose_agent.py     ← stub
+│   └── heal_agent.py         ← stub
+├── config.py                 ← Gemini API config
+├── requirements.txt
+└── main.py                   ← entry point
