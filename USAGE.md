@@ -17,3 +17,7 @@ Run the platform using python main.py.
 ## Advanced Usage
 
 Explore advanced configuration options below.
+
+### Agent Monitoring
+
+To monitor the LLM agent, check the logs/agent.log file.
