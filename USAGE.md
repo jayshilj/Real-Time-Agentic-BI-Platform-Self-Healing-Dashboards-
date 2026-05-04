@@ -29,3 +29,7 @@ Use the sidebar in the Streamlit app to filter views.
 ### Data Transformation
 
 To manually trigger a dbt build, run dbt build in the terminal.
+
+### Validation Checkpoints
+
+Great Expectations checkpoints can be verified in great_expectations/uncommitted/.
