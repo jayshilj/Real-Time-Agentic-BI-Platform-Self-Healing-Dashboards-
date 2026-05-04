@@ -37,3 +37,7 @@ Great Expectations checkpoints can be verified in great_expectations/uncommitted
 ### Alert Notifications
 
 Ensure SMTP_PORT is set to 587 to receive email alerts.
+
+### Security Considerations
+
+Do not commit the .env file to version control.
