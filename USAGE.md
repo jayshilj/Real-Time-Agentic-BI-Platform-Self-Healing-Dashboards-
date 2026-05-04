@@ -21,3 +21,7 @@ Explore advanced configuration options below.
 ### Agent Monitoring
 
 To monitor the LLM agent, check the logs/agent.log file.
+
+### Dashboard Navigation
+
+Use the sidebar in the Streamlit app to filter views.
