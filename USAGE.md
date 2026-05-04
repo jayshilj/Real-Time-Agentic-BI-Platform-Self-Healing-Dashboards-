@@ -33,3 +33,7 @@ To manually trigger a dbt build, run dbt build in the terminal.
 ### Validation Checkpoints
 
 Great Expectations checkpoints can be verified in great_expectations/uncommitted/.
+
+### Alert Notifications
+
+Ensure SMTP_PORT is set to 587 to receive email alerts.
