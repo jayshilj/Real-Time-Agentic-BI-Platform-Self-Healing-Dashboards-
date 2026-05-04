@@ -25,3 +25,7 @@ To monitor the LLM agent, check the logs/agent.log file.
 ### Dashboard Navigation
 
 Use the sidebar in the Streamlit app to filter views.
+
+### Data Transformation
+
+To manually trigger a dbt build, run dbt build in the terminal.
