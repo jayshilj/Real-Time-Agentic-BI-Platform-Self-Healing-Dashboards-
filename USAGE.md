@@ -13,3 +13,7 @@ Configure your .env file with appropriate API keys.
 ## Basic Commands
 
 Run the platform using python main.py.
+
+## Advanced Usage
+
+Explore advanced configuration options below.
