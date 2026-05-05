@@ -45,3 +45,7 @@ Do not commit the .env file to version control.
 ## Performance Tuning
 
 Increase docker memory allocation if processing large datasets.
+
+## Deployment
+
+Use docker-compose up -d for a detached production deployment.
