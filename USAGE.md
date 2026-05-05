@@ -49,3 +49,7 @@ Increase docker memory allocation if processing large datasets.
 ## Deployment
 
 Use docker-compose up -d for a detached production deployment.
+
+## Maintenance and Cleanup
+
+Periodically clear the dbt cache to free up space.
