@@ -2,6 +2,7 @@ import subprocess
 import os
 from datetime import datetime
 from graph.state import AgentState
+from tools.expectations_tool import run_gx_validation
 
 # Path to your dbt project — update this to your actual dbt project path
 DBT_PROJECT_DIR = os.getenv("DBT_PROJECT_DIR", "./dbt_project")
@@ -115,6 +116,30 @@ def heal_agent(state: AgentState) -> AgentState:
             f"{log_prefix}: ✅ Successfully rebuilt dbt model → {dbt_model}\n"
             f"           Output : {run_result['stdout'][:300]}"
         )
+        print(log)
+        state["logs"].append(log)
+        
+        # Run Great Expectations verification for healed model
+        print(f"{log_prefix}: Running post-heal data quality validation via Great Expectations...")
+        try:
+            gx_res = run_gx_validation(dbt_model, has_failure=False)
+            state["gx_validation_status"] = "passed" if gx_res["success"] else "failed"
+            state["gx_validation_results"] = gx_res["results"]
+            state["gx_report_path"] = gx_res["report_path"]
+            
+            gx_log = (
+                f"{log_prefix}: 📊 Great Expectations validation: {state['gx_validation_status'].upper()}\n"
+                f"           Passed Checks: {gx_res['passed_checks']}/{gx_res['total_checks']}\n"
+                f"           Audit Log    : {gx_res['report_path']}"
+            )
+            print(gx_log)
+            state["logs"].append(gx_log)
+        except Exception as e_gx:
+            err_log = f"{log_prefix}: ⚠️ Great Expectations validation encountered an error: {str(e_gx)}"
+            print(err_log)
+            state["logs"].append(err_log)
+            state["gx_validation_status"] = "unvalidated"
+
     else:
         state["heal_status"] = "heal_failed"
         log = (
@@ -122,9 +147,18 @@ def heal_agent(state: AgentState) -> AgentState:
             f"           Error  : {run_result['stderr'][:300]}\n"
             f"           Action : Escalating to on-call engineer via PagerDuty"
         )
-        # Future Phase: trigger PagerDuty / Slack alert here
-
-    print(log)
-    state["logs"].append(log)
+        print(log)
+        state["logs"].append(log)
+        
+        # Run Great Expectations to register the failure/defect
+        print(f"{log_prefix}: Registering defect in Great Expectations...")
+        try:
+            gx_res = run_gx_validation(dbt_model, has_failure=True)
+            state["gx_validation_status"] = "failed"
+            state["gx_validation_results"] = gx_res["results"]
+            state["gx_report_path"] = gx_res["report_path"]
+        except Exception as e_gx:
+            state["gx_validation_status"] = "unvalidated"
+            print(f"{log_prefix}: ⚠️ Great Expectations registration error: {str(e_gx)}")
 
     return state

@@ -79,7 +79,12 @@ def run_dashboard(req: DashboardRunRequest, background_tasks: BackgroundTasks):
         "fix_recommendation":  "",
         "heal_status":         "idle",
         "notify_status":       "idle",
-        "logs":                []
+        "logs":                [],
+        "lineage_path":        None,
+        "governance_metadata": None,
+        "gx_validation_status": "unvalidated",
+        "gx_validation_results": [],
+        "gx_report_path":       None
     }
 
     # Override health status if force_failure is set
@@ -131,7 +136,12 @@ def run_all_dashboards(background_tasks: BackgroundTasks):
             "fix_recommendation": "",
             "heal_status":        "idle",
             "notify_status":      "idle",
-            "logs":               []
+            "logs":               [],
+            "lineage_path":        None,
+            "governance_metadata": None,
+            "gx_validation_status": "unvalidated",
+            "gx_validation_results": [],
+            "gx_report_path":       None
         }
         background_tasks.add_task(run_pipeline, state)
 

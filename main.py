@@ -20,7 +20,12 @@ def run_dashboard(dashboard_id: str, dashboard_name: str):
         "heal_end_time": None,
         "recovery_time_seconds": None,
         "retry_count": 0,
-        "logs": []
+        "logs": [],
+        "lineage_path": None,
+        "governance_metadata": None,
+        "gx_validation_status": "unvalidated",
+        "gx_validation_results": [],
+        "gx_report_path": None
     }
 
     result = graph.invoke(initial_state)
