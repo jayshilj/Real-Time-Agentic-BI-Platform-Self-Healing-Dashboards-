@@ -1,52 +1,59 @@
-# 🤖 Real-Time Agentic BI Platform — Self-Healing Dashboards
+# 🤖 Real-Time Agentic BI Platform — Self-Healing Dashboards (V2)
 
-Autonomous LangGraph multi-agent system that monitors, diagnoses, and self-heals governed BI dashboards across Power BI using dbt-core APIs — powered by Gemini 2.5 Flash.
+Autonomous LangGraph multi-agent system that monitors, diagnoses, and self-heals governed BI dashboards across Power BI using dbt-core APIs and **Great Expectations** quality gates — powered by Gemini 2.5 Flash.
 
 ## 🏗️ Architecture
 
 ```text
-┌───────────────────────────────────────────────────────────────┐
-│                  AGENTIC BI PLATFORM                          │
-│                                                               │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────────┐    │
-│  │   MONITOR   │───▶│   DIAGNOSE  │───▶│      HEAL       │    │
-│  │    AGENT    │    │    AGENT    │    │     AGENT       │    │
-│  │             │    │             │    │                 │    │
-│  │ Polls Power │    │ Gemini 2.5  │    │ dbt model       │    │
-│  │ BI REST API │    │ Flash root  │    │ rebuild +       │    │
-│  │ every cycle │    │ cause       │    │ data validation │    │
-│  └─────────────┘    └─────────────┘    └─────────────────┘    │
-│         │                                       │             │
-│         │ (If healthy, skip)                    ▼             │
-│         │                               ┌─────────────────┐   │
-│         └──────────────────────────────▶│     NOTIFY      │   │
-│                                         │      AGENT      │   │
-│         LangGraph StateGraph            └─────────────────┘   │
-└───────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         AGENTIC BI PLATFORM — VERSION 2                         │
+│                                                                                 │
+│  ┌─────────────┐       ┌─────────────┐       ┌─────────────┐       ┌─────────┐  │
+│  │   MONITOR   │ ────▶ │  DIAGNOSE   │ ────▶ │    HEAL     │ ────▶ │ NOTIFY  │  │
+│  │    AGENT    │       │    AGENT    │       │    AGENT    │       │  AGENT  │  │
+│  └─────────────┘       └─────────────┘       └─────────────┘       └─────────┘  │
+│         │                     ▲                     │                   ▲       │
+│         │ (If healthy, skip)  │                     │                   │       │
+│         │                     │ Queries             │ Runs              │       │
+│         ▼                     │ Lineage &           ▼ Validation        │       │
+│        END             ┌─────────────┐       ┌─────────────┐            │       │
+│                        │  LINEAGE &  │       │    GREAT    │ ───────────┘       │
+│                        │ GOVERNANCE  │       │EXPECTATIONS │   Saves GX         │
+│                        │   CATALOG   │       │  FRAMEWORK  │   Audit Trail      │
+│                        └─────────────┘       └─────────────┘                    │
+└─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ## ✨ Features
 
 *   **Multi-Agent Orchestration** — LangGraph `StateGraph` wiring 4 specialized agents.
 *   **Autonomous Monitoring** — Polls Power BI REST API for dashboard health and dataset refresh timeouts.
-*   **AI-Powered Diagnosis** — Gemini 2.5 Flash identifies the exact root cause in the dbt pipeline layer with confidence scoring.
-*   **Self-Healing** — Automatically triggers `dbt run` and `dbt test` via CLI to rebuild incremental models.
-*   **Automated Alerting** — Dispatches rich HTML emails with diagnosis and remediation steps via Gmail SMTP.
+*   **Lineage & Governance Aware Diagnosis (V2)** — Integrates an upstream lineage catalog (Bronze source ➔ Silver staging ➔ Gold mart) and data governance metadata (data sensitivity, tiers, and owners) to allow the Diagnose Agent (powered by Gemini) to accurately isolate root causes across systems.
+*   **Self-Healing with Quality Gates (V2)** — Automatically triggers `dbt run` to rebuild models, and executes **Great Expectations** assertions to validate data quality post-heal, saving JSON audits for governance logs.
+*   **Automated Alerting** — Dispatches rich HTML emails with diagnosis, remediation steps, and Great Expectations checks validation state via Gmail SMTP.
 *   **REST API Layer** — FastAPI backend to trigger force-failures and retrieve dashboard states.
-*   **Live UI** — Streamlit dashboard showing real-time agent status, heal history, and force-failure testing.
+*   **Live UI** — Streamlit dashboard showing real-time agent status, visual lineage trees, data governance cards, and detailed Great Expectations assertions tables.
 
 ## 🗂️ Project Structure
 
 ```text
 agentic-bi-platform/
-├── tools/
+├── agents/
 │   ├── monitor_agent.py       # Power BI REST API health polling
-│   ├── diagnose_agent.py      # Gemini 2.5 Flash root cause analysis
-│   ├── heal_agent.py          # dbt Core rebuild + refresh trigger
+│   ├── diagnose_agent.py      # Gemini 2.5 Flash root cause analysis (Lineage-aware)
+│   ├── heal_agent.py          # dbt Core rebuild + GX quality validation (V2)
 │   └── notify_agent.py        # SMTP Email alerts
+├── tools/
+│   ├── email_tools.py         # Email SMTP utilities
+│   ├── gemini_tools.py        # Gemini diagnostic prompts & LLM client (V2)
+│   ├── powerbi_tools.py       # Mock Power BI REST API health response
+│   ├── lineage_governance.py  # Data lineage registry and catalog queries (V2)
+│   └── expectations_tool.py   # Great Expectations v1.x validator suite (V2)
+├── logs/
+│   └── great_expectations_runs/ # Audit logs for data validation runs (V2)
 ├── graph/
-│   ├── state.py               # AgentState TypedDict definition
-│   └── graph_builder.py       # LangGraph StateGraph wiring
+│   ├── state.py               # AgentState TypedDict definition (V2)
+│   └── bi_agent_graph.py      # LangGraph StateGraph wiring
 ├── api/
 │   └── main.py                # FastAPI REST API endpoints
 ├── dbt_project/

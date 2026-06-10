@@ -226,7 +226,50 @@ else:
             col_b.markdown(f"**Severity:** `{sev.upper() if sev else 'N/A'}`")
             col_c.markdown(f"**Timestamp:** `{ts[:19] if ts else 'N/A'}`")
 
+            # ── Data Lineage & Governance (V2) ──
+            lineage = d.get("lineage_path")
+            if lineage:
+                st.divider()
+                st.markdown("**⛓️ Upstream Data Lineage & Governance Flow:**")
+                nodes = []
+                for node in reversed(lineage):  # from source to dashboard
+                    n_type = node.get("type", "").upper()
+                    n_name = node.get("name", "")
+                    nodes.append(f"`[{n_type}] {n_name}`")
+                st.markdown(" ➔ ".join(nodes))
+
+                with st.expander("🔍 Detailed Governance Catalog Metadata"):
+                    for node in lineage:
+                        st.markdown(
+                            f"**[{node['type'].upper()}] {node['name']}**\n"
+                            f"- **Owner:** {node['owner']} | **Tier:** `{node['tier']}` | **Sensitivity:** `{node['sensitivity']}`\n"
+                            f"- **Description:** {node['description']}"
+                        )
+
+            # ── Great Expectations Data Quality Results (V2) ──
+            gx_status = d.get("gx_validation_status", "unvalidated")
+            if gx_status and gx_status != "unvalidated":
+                st.divider()
+                st.markdown(f"**📊 Data Quality (Great Expectations) Checks: `{'🟢 PASSED' if gx_status == 'passed' else '🔴 FAILED'}`**")
+                
+                gx_results = d.get("gx_validation_results", [])
+                if gx_results:
+                    gx_table_data = []
+                    for check in gx_results:
+                        status_indicator = "🟢 PASS" if check["success"] else "🔴 FAIL"
+                        rule = check["expectation_type"].replace("expect_column_values_to_", "").replace("expect_column_values_", "")
+                        gx_table_data.append({
+                            "Status": status_indicator,
+                            "Column": check["column"] or "Table-Level",
+                            "Data Quality Rule": rule.replace("_", " ").title(),
+                            "Observed Value": str(check["observed_value"])
+                        })
+                    st.table(gx_table_data)
+                else:
+                    st.info("No detailed Great Expectations checks found.")
+
             if logs:
+                st.divider()
                 st.markdown("**📜 Agent Logs:**")
                 log_text = "\n".join(logs)
                 st.markdown(
