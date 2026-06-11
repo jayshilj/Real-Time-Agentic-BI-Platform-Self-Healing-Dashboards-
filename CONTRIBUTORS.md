@@ -7,3 +7,7 @@ Thank you to everyone who has contributed to the Real-Time Agentic BI Platform! 
 * **Jayshil Jain** - Creator and Lead Developer
 * **AI Agent** - Autonomous Self-Healing Support
 
+## Community Contributors
+
+We welcome PRs from the community! Check out our `CONTRIBUTING.md` guidelines if you want to see your name added here.
+
