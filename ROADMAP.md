@@ -23,4 +23,10 @@ To build a fully autonomous, self-healing BI ecosystem that ensures data quality
 - Integrate Great Expectations v1.x suite to validate data quality gates post-rebuild.
 - Deploy a Streamlit live dashboard for real-time monitoring and verification logs.
 
+### Phase 4: Production Deployment & Scale (Planned)
+- Package the application stack into Docker containers.
+- Deploy the service and backend agents to a cloud provider (e.g. AWS or GCP).
+- Incorporate active alerting webhooks to Slack/Microsoft Teams.
+
+
 
