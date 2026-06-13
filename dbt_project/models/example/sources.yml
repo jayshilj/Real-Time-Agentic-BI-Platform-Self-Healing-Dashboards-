@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: raw
+    database: "{{ env_var('SNOWFLAKE_DATABASE', 'ANALYTICS') }}"
+    schema: raw
+    tables:
+      - name: orders
+        description: Raw orders table
+        columns:
+          - name: order_id
+            tests: [unique, not_null]
+          - name: updated_at
+            tests: [not_null]
+
+      - name: revenue
+        description: Raw revenue table
+        columns:
+          - name: revenue_id
+            tests: [unique, not_null]
+
+      - name: shipments
+        description: Raw shipments table
+        columns:
+          - name: shipment_id
+            tests: [unique, not_null]
