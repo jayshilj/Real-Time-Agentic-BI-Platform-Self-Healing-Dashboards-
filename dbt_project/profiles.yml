@@ -1,0 +1,13 @@
+bi_self_healing:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake           # ← change to postgres if needed
+      account:  "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user:     "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role:     "{{ env_var('SNOWFLAKE_ROLE', 'TRANSFORMER') }}"
+      warehouse:"{{ env_var('SNOWFLAKE_WAREHOUSE', 'COMPUTE_WH') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE', 'ANALYTICS') }}"
+      schema:   "{{ env_var('SNOWFLAKE_SCHEMA', 'dbt_self_healing') }}"
+      threads:  4
