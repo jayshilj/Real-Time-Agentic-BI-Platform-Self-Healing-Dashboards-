@@ -1,0 +1,61 @@
+{
+  "run_id": "run_fct_revenue_20260610_185812",
+  "model_name": "fct_revenue",
+  "timestamp": "2026-06-10T18:58:12.621556",
+  "success": true,
+  "total_checks": 3,
+  "passed_checks": 3,
+  "failed_checks": 0,
+  "results": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "success": true,
+      "observed_value": "0 unexpected rows",
+      "column": "transaction_id",
+      "details": {
+        "element_count": 5,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "success": true,
+      "observed_value": "0 unexpected rows",
+      "column": "transaction_id",
+      "details": {
+        "element_count": 5,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "success": true,
+      "observed_value": "0 unexpected rows",
+      "column": "amount",
+      "details": {
+        "element_count": 5,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      }
+    }
+  ]
+}
