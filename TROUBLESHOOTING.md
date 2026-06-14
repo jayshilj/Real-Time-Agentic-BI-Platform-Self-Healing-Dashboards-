@@ -29,3 +29,10 @@ For validation rule errors or checkpoint failures:
 * Check the generated HTML documentation or validation results log in the Great Expectations output directory.
 * Verify your expectations configurations under `great_expectations/expectations/`.
 * Re-run validation manually using `pytest` or target execution scripts to isolate rule failures.
+
+## 5. Gmail SMTP Notification Troubleshooting
+
+If the email notification system fails to send alerts:
+* Verify that you have created a valid Google App Password (not your standard Gmail login password) if using Gmail SMTP.
+* Verify port configurations in your settings (typically `587` for STARTTLS or `465` for SSL).
+* Check terminal/agent logs to see if SMTP connection timeouts or authentication failures occurred.
