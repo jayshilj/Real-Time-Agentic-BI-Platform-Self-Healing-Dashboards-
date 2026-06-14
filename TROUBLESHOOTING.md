@@ -36,3 +36,10 @@ If the email notification system fails to send alerts:
 * Verify that you have created a valid Google App Password (not your standard Gmail login password) if using Gmail SMTP.
 * Verify port configurations in your settings (typically `587` for STARTTLS or `465` for SSL).
 * Check terminal/agent logs to see if SMTP connection timeouts or authentication failures occurred.
+
+## 6. Agent Diagnosis and Healing Failure Handling
+
+If the self-healing LLM agent loop encounters failure or hangs:
+* Check for API rate limiting or quota issues from the LLM provider (e.g. OpenAI).
+* Inspect the agent graph execution logs to identify which node (Monitor, Diagnose, Heal, Validate) failed.
+* Make sure that the dbt Core CLI is accessible by the agent subprocess (i.e. correct path and permissions).
