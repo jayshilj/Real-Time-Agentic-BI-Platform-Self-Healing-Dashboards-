@@ -50,3 +50,9 @@ For package import errors or version mismatches during execution:
 * Verify that you are running within the correct python virtual environment (`venv`).
 * Check dependencies in `requirements.txt` and ensure they are locked to supported versions.
 * Run `pip install -r requirements.txt` to align your environment with the baseline requirements.
+
+## 8. FAQ and Support Channels
+
+For additional help or general inquiries:
+* Consult the README for general setup instructions.
+* Create a GitHub issue on the repository detailing the exact error, logs, and your environmental configuration.
