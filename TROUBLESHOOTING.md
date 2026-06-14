@@ -22,3 +22,10 @@ For errors related to dbt project configuration or profiles:
 * Verify that your `profiles.yml` is in the directory specified by `DBT_PROFILES_DIR`.
 * Run `dbt debug` from the dbt project directory to test database connections and configuration.
 * Ensure database credentials and host availability are correctly configured in `profiles.yml`.
+
+## 4. Great Expectations Validation Error Handling
+
+For validation rule errors or checkpoint failures:
+* Check the generated HTML documentation or validation results log in the Great Expectations output directory.
+* Verify your expectations configurations under `great_expectations/expectations/`.
+* Re-run validation manually using `pytest` or target execution scripts to isolate rule failures.
