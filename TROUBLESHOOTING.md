@@ -43,3 +43,10 @@ If the self-healing LLM agent loop encounters failure or hangs:
 * Check for API rate limiting or quota issues from the LLM provider (e.g. OpenAI).
 * Inspect the agent graph execution logs to identify which node (Monitor, Diagnose, Heal, Validate) failed.
 * Make sure that the dbt Core CLI is accessible by the agent subprocess (i.e. correct path and permissions).
+
+## 7. Python Package Dependency Mismatch Guidance
+
+For package import errors or version mismatches during execution:
+* Verify that you are running within the correct python virtual environment (`venv`).
+* Check dependencies in `requirements.txt` and ensure they are locked to supported versions.
+* Run `pip install -r requirements.txt` to align your environment with the baseline requirements.
