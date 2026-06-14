@@ -15,3 +15,10 @@ If you cannot connect to the Streamlit UI dashboard:
 * Check if the Streamlit app is running using `streamlit run streamlit_app.py`.
 * Ensure that the host and port (default: `localhost:8501`) are not blocked by local firewalls.
 * If running in a container or remote server, make sure ports are forwarded correctly.
+
+## 3. DBT Database Connection Troubleshooting
+
+For errors related to dbt project configuration or profiles:
+* Verify that your `profiles.yml` is in the directory specified by `DBT_PROFILES_DIR`.
+* Run `dbt debug` from the dbt project directory to test database connections and configuration.
+* Ensure database credentials and host availability are correctly configured in `profiles.yml`.
