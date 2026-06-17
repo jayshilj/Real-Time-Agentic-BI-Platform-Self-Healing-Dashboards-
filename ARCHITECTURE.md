@@ -18,4 +18,8 @@ Data transformation is handled by dbt (Data Build Tool). Models are constructed 
 
 Before data reaches the dashboard, it is rigorously tested using Great Expectations. Data quality checkpoints execute assertions on data volume, null values, referential integrity, and statistical distributions, blocking bad data from entering downstream layers.
 
+## 5. Visualization Layer (Streamlit)
+
+The user-facing component is a dynamic dashboard built with Streamlit. It queries the validated dbt marts to display interactive visualizations, key performance indicators, and real-time operational metrics for decision makers.
+
 
