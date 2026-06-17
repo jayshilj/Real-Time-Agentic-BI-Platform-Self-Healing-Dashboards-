@@ -14,4 +14,8 @@ The data ingestion layer is responsible for extracting data from various operati
 
 Data transformation is handled by dbt (Data Build Tool). Models are constructed using modular SQL to cleanse, join, and aggregate staging data into analysis-ready facts and dimensions (marts). This layer ensures business logic is version-controlled and testable.
 
+## 4. Validation Layer (Great Expectations)
+
+Before data reaches the dashboard, it is rigorously tested using Great Expectations. Data quality checkpoints execute assertions on data volume, null values, referential integrity, and statistical distributions, blocking bad data from entering downstream layers.
+
 
