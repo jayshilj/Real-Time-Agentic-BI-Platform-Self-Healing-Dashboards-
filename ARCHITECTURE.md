@@ -30,4 +30,8 @@ A core innovation of this platform is the LLM-powered self-healing loop. If a pi
 
 We leverage standard SMTP modules to dispatch critical alerts. While the agent handles the bulk of self-healing, unrecoverable errors and post-healing reports are instantly emailed to stakeholders, maintaining transparency and operational awareness.
 
+## 8. Future Architecture Considerations
+
+Future versions of this architecture plan to incorporate real-time streaming ingestion (e.g. Kafka or Kinesis) and expand the agent's healing capabilities to cover infrastructure provisioning via Terraform.
+
 
