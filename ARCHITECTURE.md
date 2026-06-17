@@ -22,4 +22,8 @@ Before data reaches the dashboard, it is rigorously tested using Great Expectati
 
 The user-facing component is a dynamic dashboard built with Streamlit. It queries the validated dbt marts to display interactive visualizations, key performance indicators, and real-time operational metrics for decision makers.
 
+## 6. Agentic Self-Healing Loop
+
+A core innovation of this platform is the LLM-powered self-healing loop. If a pipeline failure occurs (e.g. dbt build error or validation failure), an autonomous agent intercepts the error, diagnoses the root cause using context and metadata, automatically implements a fix, and triggers a re-run without human intervention.
+
 
