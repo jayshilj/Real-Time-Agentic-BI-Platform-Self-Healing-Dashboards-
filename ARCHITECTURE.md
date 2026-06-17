@@ -26,4 +26,8 @@ The user-facing component is a dynamic dashboard built with Streamlit. It querie
 
 A core innovation of this platform is the LLM-powered self-healing loop. If a pipeline failure occurs (e.g. dbt build error or validation failure), an autonomous agent intercepts the error, diagnoses the root cause using context and metadata, automatically implements a fix, and triggers a re-run without human intervention.
 
+## 7. Monitoring and Alerting
+
+We leverage standard SMTP modules to dispatch critical alerts. While the agent handles the bulk of self-healing, unrecoverable errors and post-healing reports are instantly emailed to stakeholders, maintaining transparency and operational awareness.
+
 
