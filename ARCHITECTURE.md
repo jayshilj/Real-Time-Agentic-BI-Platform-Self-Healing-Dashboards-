@@ -10,4 +10,8 @@ The system consists of a modern data pipeline integrated with an autonomous LLM 
 
 The data ingestion layer is responsible for extracting data from various operational databases and external APIs. This raw data is loaded into staging tables within the primary analytical data warehouse, preserving the original schema and granularity.
 
+## 3. Transformation Layer (dbt)
+
+Data transformation is handled by dbt (Data Build Tool). Models are constructed using modular SQL to cleanse, join, and aggregate staging data into analysis-ready facts and dimensions (marts). This layer ensures business logic is version-controlled and testable.
+
 
