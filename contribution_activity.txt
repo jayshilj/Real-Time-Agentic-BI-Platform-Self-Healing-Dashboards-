@@ -185,3 +185,4 @@ Commit for 2026-07-05 09:18:12: Add new feature: real-time alerts via email
 Commit for 2026-07-05 17:23:47: Write tests for powerbi_tools and email_tools
 Commit for 2026-07-05 19:54:28: Add unit tests for gemini API integration
 Commit for 2026-07-06 10:01:01: Write tests for powerbi_tools and email_tools
+Commit for 2026-07-06 23:32:10: Feature: export failed reports to PDF
