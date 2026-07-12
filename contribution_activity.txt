@@ -244,3 +244,4 @@ Commit for 2026-07-11 13:47:58: Feature: export failed reports to PDF
 Commit for 2026-07-11 16:24:14: Add integration test cases for data lineage
 Commit for 2026-07-11 15:24:19: Feature: add support for dynamic thresholds in alerts
 Commit for 2026-07-11 15:51:24: Add new feature: real-time alerts via email
+Commit for 2026-07-11 21:49:20: Feature: add support for dynamic thresholds in alerts
