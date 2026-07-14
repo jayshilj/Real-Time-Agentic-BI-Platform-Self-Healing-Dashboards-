@@ -283,3 +283,4 @@ Commit for 2026-07-14 17:21:20: Implement new feature: self-healing logic for db
 Commit for 2026-07-14 19:56:49: Feature: add support for dynamic thresholds in alerts
 Commit for 2026-07-14 14:40:11: Add unit tests for gemini API integration
 Commit for 2026-07-14 16:53:44: Refactor state graph and add new error handling tests
+Commit for 2026-07-14 18:34:09: Add integration test cases for data lineage
