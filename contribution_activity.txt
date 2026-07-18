@@ -315,3 +315,4 @@ Commit for 2026-07-18 09:54:32: Refactor state graph and add new error handling 
 Commit for 2026-07-18 17:11:24: Feature: add support for dynamic thresholds in alerts
 Commit for 2026-07-18 23:22:41: Add unit tests for gemini API integration
 Commit for 2026-07-18 15:00:41: Add mock tests for external API endpoints
+Commit for 2026-07-18 18:21:36: Update test coverage for new features
