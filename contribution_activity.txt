@@ -312,3 +312,4 @@ Commit for 2026-07-17 13:36:17: Implement new feature: anomaly detection for met
 Commit for 2026-07-17 13:06:00: Feature: add support for dynamic thresholds in alerts
 Commit for 2026-07-18 13:53:01: Add unit tests for gemini API integration
 Commit for 2026-07-18 09:54:32: Refactor state graph and add new error handling tests
+Commit for 2026-07-18 17:11:24: Feature: add support for dynamic thresholds in alerts
