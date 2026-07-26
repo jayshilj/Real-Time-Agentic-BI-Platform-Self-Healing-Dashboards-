@@ -391,3 +391,4 @@ Commit for 2026-07-25 09:33:15: Add unit tests for gemini API integration
 Commit for 2026-07-25 19:00:57: Feature: export failed reports to PDF
 Commit for 2026-07-26 20:42:12: Add mock tests for external API endpoints
 Commit for 2026-07-26 22:52:29: Implement new feature: self-healing logic for dbt models
+Commit for 2026-07-26 14:20:23: Feature: add support for dynamic thresholds in alerts
