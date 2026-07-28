@@ -416,3 +416,4 @@ Commit for 2026-07-27 20:46:24: Refactor state graph and add new error handling 
 Commit for 2026-07-27 19:29:28: Write tests for powerbi_tools and email_tools
 Commit for 2026-07-28 18:11:07: Feature: add support for dynamic thresholds in alerts
 Commit for 2026-07-28 13:52:13: Add test cases for edge cases in dashboard generation
+Commit for 2026-07-28 13:14:23: Update test coverage for new features
