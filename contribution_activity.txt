@@ -433,3 +433,4 @@ Commit for 2026-07-29 12:33:54: Feature: export failed reports to PDF
 Commit for 2026-07-29 20:05:46: Update test coverage for new features
 Commit for 2026-07-29 14:04:43: Add unit tests for gemini API integration
 Commit for 2026-07-29 14:07:13: Implement new feature: self-healing logic for dbt models
+Commit for 2026-07-29 14:53:55: Add integration test cases for data lineage
