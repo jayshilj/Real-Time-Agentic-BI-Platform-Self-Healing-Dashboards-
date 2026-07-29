@@ -440,3 +440,4 @@ Commit for 2026-07-29 23:44:31: Feature: add support for dynamic thresholds in a
 Commit for 2026-07-29 20:57:57: Add test cases for edge cases in dashboard generation
 Commit for 2026-07-29 10:40:46: Feature: add support for dynamic thresholds in alerts
 Commit for 2026-07-29 20:39:56: Write tests for powerbi_tools and email_tools
+Commit for 2026-07-29 17:27:30: Add integration test cases for data lineage
