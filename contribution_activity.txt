@@ -510,3 +510,4 @@ Commit for 2026-08-08 16:07:16: Feature: export failed reports to PDF
 Commit for 2026-08-08 15:26:03: Add mock tests for external API endpoints
 Commit for 2026-08-08 14:00:47: Refactor state graph and add new error handling tests
 Commit for 2026-08-08 19:57:23: Write tests for powerbi_tools and email_tools
+Commit for 2026-08-08 15:22:55: Add integration test cases for data lineage
