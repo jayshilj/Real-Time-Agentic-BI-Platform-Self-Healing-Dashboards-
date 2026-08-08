@@ -501,3 +501,4 @@ Commit for 2026-08-06 19:50:45: Add integration test cases for data lineage
 Commit for 2026-08-06 11:41:22: Add integration test cases for data lineage
 Commit for 2026-08-06 20:56:01: Add integration test cases for data lineage
 Commit for 2026-08-07 21:36:45: Add test cases for edge cases in dashboard generation
+Commit for 2026-08-07 23:44:39: Feature: add support for dynamic thresholds in alerts
