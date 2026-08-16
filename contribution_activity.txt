@@ -595,3 +595,4 @@ Commit for 2026-08-15 19:33:25: Refactor state graph and add new error handling 
 Commit for 2026-08-15 09:18:16: Add unit tests for gemini API integration
 Commit for 2026-08-15 14:46:20: Implement new feature: anomaly detection for metrics
 Commit for 2026-08-15 19:51:09: Write tests for powerbi_tools and email_tools
+Commit for 2026-08-15 20:31:05: Feature: add support for dynamic thresholds in alerts
