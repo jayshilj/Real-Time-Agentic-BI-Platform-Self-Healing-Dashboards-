@@ -647,3 +647,4 @@ Commit for 2026-08-22 19:26:43: Feature: add support for dynamic thresholds in a
 Commit for 2026-08-22 14:35:37: Feature: export failed reports to PDF
 Commit for 2026-08-22 23:48:44: Feature: export failed reports to PDF
 Commit for 2026-08-22 11:10:36: Feature: add support for dynamic thresholds in alerts
+Commit for 2026-08-23 17:24:12: Update test coverage for new features
